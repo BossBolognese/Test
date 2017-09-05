@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerController : MonoBehaviour {
@@ -11,8 +10,6 @@ public class PlayerController : MonoBehaviour {
 
     Camera cam;
     PlayerMotor motor;
-
-    public Image cursor;
 
     public Interactable focus;
 
@@ -33,7 +30,7 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
         {
             //shoot ray from mouse pos
-            Ray ray = cam.ScreenPointToRay(cursor.transform.position);
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 100, movementMask))
@@ -51,7 +48,7 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetMouseButtonDown(1))
         {
             //shoot ray from mouse pos
-            Ray ray = cam.ScreenPointToRay(cursor.transform.position);
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 100))
